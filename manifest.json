@@ -1,0 +1,19 @@
+{
+  "name": "BibleUp",
+  "version": "1.0.0",
+  "description": "The official browser extension for BibleUp.",
+  "manifest_version": 3,
+  "permissions": ["storage", "tabs"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_icon": {
+      "16": "assets/icon-16.png",
+      "32": "assets/icon-32.png"
+    },
+    "default_title": "Configure BibleUP",
+    "default_popup": "./display/popup.html"
+  },
+  "web_accessible_resources": ["display/*.woff2"]
+}
