@@ -1,33 +1,201 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>BibleUp Extenstion Settings</title>
   <link rel="stylesheet" type="text/css" href="./popup.css" />
 </head>
+
 <body>
-  <div id="container">
-    <div id="header">
-      <img src="../assets/icon-32.png" alt="BibleUp Logo"/>
-      <h2>BibleUp</h2>
-    </div>
+  <div id="header">
+    <img src="../assets/icon-32.png" alt="BibleUp Logo" />
+    <h2>BibleUp</h2>
+  </div>
 
-    <section id="btn-wrapper">
-      <div class="btn">
+  <div id="main-wrapper">
+
+    <section id="box-wrapper">
+      <div class="box btn">
         <h4>Select Options</h4>
-        <p>Click here to set BibleUp options and stylres mannually</p>
+        <p>Click here to set BibleUp options and styles manually</p>
       </div>
-
-      <div class="btn">
+      <div class="box btn">
         <h4>Paste Config</h4>
         <p>Click here to paste generated config options from the editor (recommended)</p>
       </div>
+      <button id="activate-btn" class="primary-btn on">Activate BibleUp</button>
+      <p id="status">BibleUp is activated</p>
+    </section>
 
-      <button id="activate">Activate BibleUp on this page</button>
+    <section id="select-option">
+      <div class="option-box">
+        <label for="type">Popup Type: </label>
+        <div>
+          <select name="type" id="type">
+            <option value="classic" selected>classic</option>
+            <option value="inline">inline</option>
+            <option value="wiki">wiki</option>
+          </select>
+          <p>The preferred popup type.</p>
+        </div>
+      </div>
+
+      <div class="option-box">
+        <label for="version">Version: </label>
+        <div>
+          <select name="version" id="version">
+            <option value="KJV" selected>King James Version (KJV)</option>
+            <option value="ASV">American Standard Version (ASV)</option>
+            <option value="LSV">Literal Standard Version (LSV)</option>
+            <option value="WEB">World English Bible (WEB)</option>
+          </select>
+          <p>The default Bible translation for references.</p>
+        </div>
+      </div>
+
+      <div class="option-box">
+        <label for="theme">Dark Theme: </label>
+        <div>
+          <div class="wrap">
+            <label for="t">True</label>
+            <input id="t" name="darkTheme" type="radio" value="true" checked />
+            <label for="f">False</label>
+            <input id="f" name="darkTheme" type="radio" value="false" />
+          </div>
+          <p>Enable dark theme on popup (this can be overridden by other background color).</p>
+        </div>
+      </div>
+
+      <details>
+        <summary class="option-divider">Popup backgroung and colors <span>&#8250;</span></summary>
+
+        <div class="option-box">
+          <label>Primary: </label>
+          <div>
+            <input id="primary" type="text" maxlength="30" value="false" />
+            <p>Set color for overall popup background</p>
+          </div>
+        </div>
+        <div class="option-box">
+          <label>Secondary: </label>
+          <div>
+            <input id="secondary" type="text" maxlength="30" value="false" />
+            <p>Set background color for popup header (if it exists)</p>
+          </div>
+        </div>
+        <div class="option-box">
+          <label>Tertiary: </label>
+          <div>
+            <input id="tertiary" type="text" maxlength="30" value="false" />
+            <p>Set background color for popup version (if it exists)</p>
+          </div>
+        </div>
+
+        <div class="option-box">
+          <label>Header Color: </label>
+          <div>
+            <input id="headerColor" type="text" maxlength="30" value="false" />
+            <p>Font color for popup header (if it exists)</p>
+          </div>
+        </div>
+
+        <div class="option-box">
+          <label>Font Color: </label>
+          <div>
+            <input id="fontColor" type="text" maxlength="30" value="false" />
+            <p>The default font color for the popup</p>
+          </div>
+        </div>
+
+        <div class="option-box">
+          <label>Version Color: </label>
+          <div>
+            <input id="versionColor" type="text" maxlength="30" value="false" />
+            <p>Font color for popup version (if it exists).</p>
+          </div>
+        </div>
+
+        <div class="option-box">
+          <label>Close Color: </label>
+          <div>
+            <input id="closeColor" type="text" maxlength="30" value="false" />
+            <p>Set color for close button (if it exists).</p>
+          </div>
+        </div>
+
+        <div class="option-box">
+          <label>Border Radius: </label>
+          <div>
+            <input id="borderRadius" type="text" maxlength="30" value="false" />
+            <p>Set border radius for popup (in units).</p>
+          </div>
+        </div>
+
+        <div class="option-box">
+          <label>Box Shadow: </label>
+          <div>
+            <input id="boxShadow" type="text" maxlength="30" value="false" />
+            <p>Set a drop shadow for the popup (using CSS syntax).</p>
+          </div>
+        </div>
+
+        <div class="option-box">
+          <label>Font Size: </label>
+          <div>
+            <input id="fontSize" type="text" maxlength="200" value="false" />
+            <p>Set font size for all popup (in units)</p>
+          </div>
+        </div>
+      </details>
+
+      <details>
+        <summary class="option-divider">Additional Options <span>&#8250;</span></summary>
+        <div class="option-box">
+          <label>Ignore Specific HTML Elements: </label>
+          <div>
+            <input id="ignore" type="text" maxlength="200" value="false" />
+            <p>BibleUp won't tag element listed here.<br>
+              Seperate these elements using a comma and put inside a square bracket.</p>
+          </div>
+        </div>
+
+        <div class="option-box">
+          <label>Allow Specific HTML Elements: </label>
+          <div>
+            <input id="allow" type="text" maxlength="200" value="false" />
+            <p>Override the default elements ignored by BibleUp by placing them here.<br>
+              Seperate these elements using a comma and put inside a square bracket.</p>
+          </div>
+        </div>
+      </details>
+
+      <div style="text-align:center"><button id="save-btn" class="primary-btn">Save Options</button></div>
+
+    </section>
+
+    <section id="paste-config">
+      <div class="note">
+        <h4>Note:</h4>
+        <p>Use the instant editor to style popup in real-time, then copy and paste the generated config options.<br>
+          This section <b>overides every options</b> in the <b>Select Options tab</b>.<br><br>
+          Leave this editor blank or set to false if you want to manually seclect options instead.
+        </p>
+      </div>
+
+      <div class="option-box alt">
+        <label for="version">Raw Options: </label>
+        <div>
+          <textarea id="rawOptions"></textarea>
+          <p>Paste the raw config options here</p>
+        </div>
+      </div>
+
+      <div style="text-align:center"><button id="save-btn" class="primary-btn">Save Options</button></div>
     </section>
 
   </div>
 
-
-<script src="./options.js"></script>
+  <script type='module' src="./js/popup.js"></script>
 </body>
+
 </html>
