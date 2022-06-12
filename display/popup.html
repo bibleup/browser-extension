@@ -8,13 +8,14 @@
 
 <body>
   <div id="header">
-    <img src="../assets/icon-32.png" alt="BibleUp Logo" />
+    <img src="../assets/img/icon-32.png" alt="BibleUp Logo" />
     <h2>BibleUp</h2>
   </div>
 
   <div id="main-wrapper">
 
-    <section id="box-wrapper">
+    <!-- Home Page -->
+    <section id="home-page">
       <div class="box btn">
         <h4>Select Options</h4>
         <p>Click here to set BibleUp options and styles manually</p>
@@ -27,7 +28,8 @@
       <p id="status">BibleUp is activated</p>
     </section>
 
-    <section id="select-option">
+    <!-- Select Options -->
+    <section id="select-option" hidden>
       <div class="option-box">
         <label for="type">Popup Type: </label>
         <div>
@@ -169,11 +171,10 @@
         </div>
       </details>
 
-      <div style="text-align:center"><button id="save-btn" class="primary-btn">Save Options</button></div>
-
     </section>
 
-    <section id="paste-config">
+    <!-- Paste Config -->
+    <section id="paste-config" hidden>
       <div class="note">
         <h4>Note:</h4>
         <p>Use the instant editor to style popup in real-time, then copy and paste the generated config options.<br>
@@ -190,9 +191,15 @@
         </div>
       </div>
 
-      <div style="text-align:center"><button id="save-btn" class="primary-btn">Save Options</button></div>
+      
     </section>
 
+    <!-- Save button wrapper -->
+    <div id="save-btn-wrapper" hidden>
+      <button id="save-btn" class="primary-btn">Save Options</button>
+    </div>
+
+    <!-- End of main wrapper -->
   </div>
 
   <script type='module' src="./js/popup.js"></script>

@@ -31,16 +31,16 @@ let options = () => {
         borderRadius: sanitize(borderRadius, false),
         boxShadow: sanitize(boxShadow, false),
         fontSize: sanitize(fontSize, false),
-        ignore: sanitize(ignore, '[]'),
-        allow: sanitize(allow, '[]'),
+        ignore: sanitize(ignore, ["H1", "H2", "H3", "H4", "H5", "H6", "IMG", "A"]),
+        allow: sanitize(allow, []),
         rawOptions: sanitize(rawOptions, false),
     }
     return opt;
 }
 
 function sanitize(value, d) {
-    if (value == 'false' || value == '') {
-        if (d == false) {
+    if (value === 'false' || value == '') {
+        if (d === false) {
             return false;
         } else {
             return d;
