@@ -13,14 +13,16 @@
   </div>
 
   <div id="main-wrapper">
-
+    
+    <button id="back-btn" hidden>Back</button>
+   
     <!-- Home Page -->
     <section id="home-page">
-      <div class="box btn">
+      <div class="box btn" id="select-option-btn">
         <h4>Select Options</h4>
-        <p>Click here to set BibleUp options and styles manually</p>
+        <p>Click here to set BibleUp options and style manually</p>
       </div>
-      <div class="box btn">
+      <div class="box btn" id="paste-config-btn">
         <h4>Paste Config</h4>
         <p>Click here to paste generated config options from the editor (recommended)</p>
       </div>
@@ -30,6 +32,15 @@
 
     <!-- Select Options -->
     <section id="select-option" hidden>
+      <div class="note">
+        <h4>Note:</h4>
+        
+        <p>
+          Set any option to <b>false or leave empty</b> to get the default value.
+          For full documentation of these options, check the docs
+        </p>
+      </div>
+
       <div class="option-box">
         <label for="type">Popup Type: </label>
         <div>
@@ -177,7 +188,7 @@
     <section id="paste-config" hidden>
       <div class="note">
         <h4>Note:</h4>
-        <p>Use the instant editor to style popup in real-time, then copy and paste the generated config options.<br>
+        <p>Use the <a href="https://bibleup.netlify.app/demo#editor" target="_blank">instant editor</a> to style popup in real-time, then copy and paste the generated options.
           This section <b>overides every options</b> in the <b>Select Options tab</b>.<br><br>
           Leave this editor blank or set to false if you want to manually seclect options instead.
         </p>
