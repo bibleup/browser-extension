@@ -1,4 +1,4 @@
-import options from './options.js';
+import Options from './options.js';
 
 let homePage = document.getElementById('home-page');
 let selectOption = document.getElementById('select-option');
@@ -8,6 +8,9 @@ let pasteConfigBtn = document.getElementById('paste-config-btn');
 let saveBtnWrapper = document.getElementById('save-btn-wrapper');
 let saveBtn = document.getElementById('save-btn');
 let backBtn = document.getElementById('back-btn');
+let activeBtn = document.getElementById('activate-btn');
+let notification = document.getElementById('notification');
+let activateStatus = document.getElementById('activate-status');
 
 let toggleView = (view, isEditor=false) => {
     homePage.hidden = true;
@@ -16,6 +19,27 @@ let toggleView = (view, isEditor=false) => {
     view.hidden = false;
     saveBtnWrapper.hidden = (isEditor) ? false : true;
     backBtn.hidden = (isEditor) ? false : true;
+}
+
+let showNotification = (value = true) => {
+    value = !value
+    notification.hidden = value
+
+    if (value == false) {
+        setTimeout(() => {
+            notification.hidden = true
+        }, 2000)
+    }
+}
+
+let showStatus = (status) => {
+    if (status == true) {
+        activateStatus.textContent = 'BibleUp is activated'
+        activeBtn.textContent = 'Deactivate BibleUp'
+    } else {
+        activateStatus.textContent = 'BibleUp is not activated'
+        activeBtn.textContent = 'Activate BibleUp'
+    }
 }
 
 selectOptionBtn.onclick = () => {
@@ -32,46 +56,33 @@ backBtn.onclick = () => {
 
 saveBtn.onclick = () => {
     // Store the user's options
-    let savedOpt = realOptions()
-    chrome.storage.sync.set({opt: savedOpt});
-    // console.log(savedOpt)
-    // console.log(typeof savedOpt)
+    chrome.storage.sync.set({bibleup: Options.realOptions()}, function() {
+        chrome.storage.sync.set({bibleup_init: Options.getOptions()}, function() {
+            showNotification();
+        });
+    });
 }
 
-/**
- * Get options from 'select options' or 'paste config'
- * Returns structured option object
- */
-let realOptions = () => {
-    let opt = options();
-
-    if (opt.rawOptions === 'false' || opt.rawOptions == '') {
-        let obj = {
-            popup: opt.popup,
-            version: opt.version,
-            darkTheme: opt.darkTheme,
-            styles: {
-                primary: opt.primary,
-                secondary: opt.secondary,
-                tertiary: opt.tertiary,
-                headerColor: opt.headerColor,
-                color: [opt.fontColor, opt.versionColor, opt.closeColor],
-                borderRadius: opt.borderRadius,
-                boxShadow: opt.boxShadow,
-                fontSize: opt.fontSize
-            },
-            bu_allow: opt.bu_allow,
-            bu_ignore: opt.bu_ignore
+activeBtn.onclick = () => {
+    chrome.storage.sync.get('bibleup_activated', function (data) {
+        if (data.bibleup_activated) {
+            chrome.storage.sync.set({bibleup_activated: false}, showStatus.bind(this, false))
+        } else {
+            chrome.storage.sync.set({bibleup_activated: true}, showStatus.bind(this, true))
         }
-        return JSON.stringify(obj);
-    } else {
-        return opt.rawOptions;
-    }
+    })
 }
 
+let setActivateStatus = () => {
+    chrome.storage.sync.get('bibleup_activated', function (data) {
+        if (data.bibleup_activated) {
+            showStatus(true)
+        } else {
+            showStatus(false)
+        }
+    })
+}
 
-
-
-
-
-restoreOptions()
+// restore options
+setActivateStatus()
+Options.restore()

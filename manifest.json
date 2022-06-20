@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "The official browser extension for BibleUp.",
   "manifest_version": 3,
-  "permissions": ["storage", "tabs"],
+  "permissions": ["storage", "webNavigation", "scripting", "tabs", "activeTab"],
+  "host_permissions": ["http://localhost/*", "*://*/*"],
   "background": {
     "service_worker": "background.js"
   },

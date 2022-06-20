@@ -13,7 +13,8 @@
   </div>
 
   <div id="main-wrapper">
-    
+
+    <div id="notification" hidden>Options saved successfully</div>
     <button id="back-btn" hidden>Back</button>
    
     <!-- Home Page -->
@@ -27,17 +28,16 @@
         <p>Click here to paste generated config options from the editor (recommended)</p>
       </div>
       <button id="activate-btn" class="primary-btn on">Activate BibleUp</button>
-      <p id="status">BibleUp is activated</p>
+      <p id="activate-status">BibleUp is activated</p>
     </section>
 
     <!-- Select Options -->
     <section id="select-option" hidden>
       <div class="note">
         <h4>Note:</h4>
-        
         <p>
-          Set any option to <b>false or leave empty</b> to get the default value.
-          For full documentation of these options, check the docs
+          Set any option to <span>false or leave empty</span> to get the default value.
+          For full documentation of these options, check the <span><a href="https://bibleup.netlify.app/docs" target="_blank">docs</a></span>
         </p>
       </div>
 
@@ -70,17 +70,17 @@
         <label for="theme">Dark Theme: </label>
         <div>
           <div class="wrap">
-            <label for="t">True</label>
-            <input id="t" name="darkTheme" type="radio" value="true" checked />
-            <label for="f">False</label>
-            <input id="f" name="darkTheme" type="radio" value="false" />
+            <label for="dark-true">True</label>
+            <input id="dark-true" name="darkTheme" type="radio" value="dark" checked />
+            <label for="dark-false">False</label>
+            <input id="dark-false" name="darkTheme" type="radio" value="light" />
           </div>
           <p>Enable dark theme on popup (this can be overridden by other background color).</p>
         </div>
       </div>
 
       <details>
-        <summary class="option-divider">Popup backgroung and colors <span>&#8250;</span></summary>
+        <summary class="option-divider">Popup background and colors <span>&#8250;</span></summary>
 
         <div class="option-box">
           <label>Primary: </label>
@@ -188,8 +188,8 @@
     <section id="paste-config" hidden>
       <div class="note">
         <h4>Note:</h4>
-        <p>Use the <a href="https://bibleup.netlify.app/demo#editor" target="_blank">instant editor</a> to style popup in real-time, then copy and paste the generated options.
-          This section <b>overides every options</b> in the <b>Select Options tab</b>.<br><br>
+        <p>Use the <span><a href="https://bibleup.netlify.app/demo#editor" target="_blank">instant editor</a></span> to style popup in real-time, then copy and paste the generated options.
+          This section <span>overides every options</span> in the Select Options tab.<br><br>
           Leave this editor blank or set to false if you want to manually seclect options instead.
         </p>
       </div>

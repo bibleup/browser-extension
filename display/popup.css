@@ -121,7 +121,7 @@ body {
 
 
 
-#status {
+#activate-status {
     margin-top: 10px;
     padding: 2px 10px;
     background: rgba(0, 128, 0, 0.205);
@@ -139,7 +139,6 @@ body {
 
 .option-box.alt {
     width: 100%;
-    margin-top: 10px;
     flex-direction: column;
     justify-content: center;
 }
@@ -196,7 +195,7 @@ textarea:hover, textarea:focus {
 .option-divider {
     width: 100%;
     height: 50px;
-    background: #ccc;
+    background: #e6e6e6;
     padding: 10px 20px;
     margin-top: 20px;
     display: flex;
@@ -211,10 +210,21 @@ textarea:hover, textarea:focus {
 }
 
 .note {
-    margin-top: 20px;
+    margin-top: 10px;
     padding: 20px;
     width: 100%;
     background: #ffeb998c;
+    background: #ffeb99;
+}
+
+.note span {
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.note a {
+    color: inherit;
 }
 
 #save-btn-wrapper {
@@ -236,4 +246,22 @@ textarea:hover, textarea:focus {
 
 #back-btn:hover {
     background: #4885ee4b;
+}
+
+#notification {
+    position: fixed;
+    top: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    width: 70%;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    padding: 5px 10px;
+    background: rgba(0, 128, 0, 0.205);
+    background: #4ba552;
+    color: white;
 }

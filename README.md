@@ -1,7 +1,10 @@
-# browser-extension
-BibleUp browser extension
+# BibleUP Browser Extention
+BibleUp browser extension. To be suppoerted by major chromium-based browsers:
+- Chrome
+- Edge
+- Valvadi
+- Opera (needs tweak)
 
-## snippets
-chrome.storage.sync.set
-chrome.storage.sync.get
-document.addEventListener('DOMContentLoaded', func);
+## TO-DO
+- [ ] Add support for SPAs and sites using ajax/fetch for DOM updates
+- [ ] change if data is valid when pasted in 'paste config' section
