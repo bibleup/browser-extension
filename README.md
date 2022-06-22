@@ -6,5 +6,5 @@ BibleUp browser extension. To be suppoerted by major chromium-based browsers:
 - Opera (needs tweak)
 
 ## TO-DO
-- [ ] Add support for SPAs and sites using ajax/fetch for DOM updates
+- [x] Add support for SPAs and sites using ajax/fetch for DOM updates
 - [ ] change if data is valid when pasted in 'paste config' section
