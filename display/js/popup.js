@@ -11,6 +11,7 @@ let backBtn = document.getElementById('back-btn');
 let activeBtn = document.getElementById('activate-btn');
 let notification = document.getElementById('notification');
 let activateStatus = document.getElementById('activate-status');
+let refreshBtn = document.getElementById('refresh-btn')
 
 let toggleView = (view, isEditor=false) => {
     homePage.hidden = true;
@@ -25,7 +26,7 @@ let showNotification = (value = true) => {
     value = !value
     notification.hidden = value
 
-    if (value == false) {
+    if (value === false) {
         setTimeout(() => {
             notification.hidden = true
         }, 2000)
@@ -35,9 +36,13 @@ let showNotification = (value = true) => {
 let showStatus = (status) => {
     if (status == true) {
         activateStatus.textContent = 'BibleUp is activated'
+        activateStatus.classList.remove('off')
+        refreshBtn.hidden = false
         activeBtn.textContent = 'Deactivate BibleUp'
     } else {
         activateStatus.textContent = 'BibleUp is not activated'
+        activateStatus.classList.add('off')
+        refreshBtn.hidden = true
         activeBtn.textContent = 'Activate BibleUp'
     }
 }
@@ -56,8 +61,8 @@ backBtn.onclick = () => {
 
 saveBtn.onclick = () => {
     // Store the user's options
-    chrome.storage.sync.set({bibleup: Options.realOptions()}, function() {
-        chrome.storage.sync.set({bibleup_init: Options.getOptions()}, function() {
+    chrome.storage.sync.set({bibleup: Options.getOptions()}, function() {
+        chrome.storage.sync.set({bibleup_init: Options.initOptions()}, function() {
             showNotification();
         });
     });

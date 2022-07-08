@@ -84,6 +84,7 @@ body {
 
 .btn:hover {
     background: #4885ee4b;
+    background: rgba(0, 0, 0, 0.05)
 }
 
 .primary-btn {
@@ -103,29 +104,40 @@ body {
     background: #3174ec;
 }
 
-#activate-btn.on {
-    background: #4884EE;
+#activate-wrapper {
+    width: 100%;
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-#activate-btn.on:hover {
-    background: #3174ec;
+#activate-btn {
+    margin-top: 0;
 }
 
-#activate-btn.off {
-    background: darkgray;
+#refresh-btn {
+    width: 28px;
+    height: 28px;
+    display: inline-block;
+    margin-left: 5px;
+    cursor: pointer;
 }
 
-#activate-btn.off:hover {
-    background: rgb(85, 84, 84);
+#refresh-btn:hover {
+    background: rgba(0, 0, 0, 0.08);
+    border-radius: 5px;
 }
-
-
 
 #activate-status {
-    margin-top: 10px;
     padding: 2px 10px;
     background: rgba(0, 128, 0, 0.205);
-    border-radius: 15px
+    border-radius: 15px;
+    margin-top: 10px;
+}
+
+#activate-status.off {
+    background: rgba(0, 0, 0, 0.03);
 }
 
 .option-box {
@@ -189,7 +201,7 @@ input, select, textarea {
 input:hover, input:focus,
 select:hover, select:focus,
 textarea:hover, textarea:focus {
-    border-color:#4884EE;
+    border-color: #4885eeda;
 }
 
 .option-divider {
@@ -261,7 +273,7 @@ textarea:hover, textarea:focus {
     align-items: center;
     border-radius: 5px;
     padding: 5px 10px;
-    background: rgba(0, 128, 0, 0.205);
-    background: #4ba552;
+    background: rgb(3, 155, 3);
+    /* background: #4ba552; */
     color: white;
 }

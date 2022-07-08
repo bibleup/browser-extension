@@ -16,7 +16,7 @@
 
     <div id="notification" hidden>Options saved successfully</div>
     <button id="back-btn" hidden>Back</button>
-   
+
     <!-- Home Page -->
     <section id="home-page">
       <div class="box btn" id="select-option-btn">
@@ -27,8 +27,13 @@
         <h4>Paste Config</h4>
         <p>Click here to paste generated config options from the editor (recommended)</p>
       </div>
-      <button id="activate-btn" class="primary-btn on">Activate BibleUp</button>
-      <p id="activate-status">BibleUp is activated</p>
+
+      <div id="activate-wrapper">
+        <button id="activate-btn" class="primary-btn off">Activate BibleUp</button>
+        <img id="refresh-btn" src="../assets/img/refresh3.png" alt="refresh bibleup" width="50" height="50" />
+      </div>
+
+      <p id="activate-status" class="off">BibleUp is activated</p>
     </section>
 
     <!-- Select Options -->
@@ -37,7 +42,8 @@
         <h4>Note:</h4>
         <p>
           Set any option to <span>false or leave empty</span> to get the default value.
-          For full documentation of these options, check the <span><a href="https://bibleup.netlify.app/docs" target="_blank">docs</a></span>
+          For full documentation of these options, check the <span><a href="https://bibleup.netlify.app/docs"
+              target="_blank">docs</a></span>
         </p>
       </div>
 
@@ -188,7 +194,8 @@
     <section id="paste-config" hidden>
       <div class="note">
         <h4>Note:</h4>
-        <p>Use the <span><a href="https://bibleup.netlify.app/demo#editor" target="_blank">instant editor</a></span> to style popup in real-time, then copy and paste the generated options.
+        <p>Use the <span><a href="https://bibleup.netlify.app/demo#editor" target="_blank">instant editor</a></span> to
+          style popup in real-time, then copy and paste the generated options.
           This section <span>overides every options</span> in the Select Options tab.<br><br>
           Leave this editor blank or set to false if you want to manually seclect options instead.
         </p>
@@ -198,11 +205,11 @@
         <label for="version">Raw Options: </label>
         <div>
           <textarea id="rawOptions"></textarea>
-          <p>Paste the raw config options here</p>
+          <p>Paste the raw config options here.<br>Options will fallback to Select Options if input is invalid.</p>
         </div>
       </div>
 
-      
+
     </section>
 
     <!-- Save button wrapper -->

@@ -47,7 +47,7 @@ class Options {
    * @desc  Get all real options value - sanitized and clean
    * @returns object
    */
-  static realOptions() {
+  static getOptions() {
     let opt = this.refOptions();
 
     let sanitized = {
@@ -77,9 +77,12 @@ class Options {
    * Else it returns the values in 'SelectTab' section
    * @returns string
    */
-  static getOptions() {
-    let opt = this.realOptions();
-    if (opt.rawOptions === 'false' || opt.rawOptions == '') {
+  static initOptions() {
+    let opt = this.getOptions();
+    let rawOptions = (this.toJSON(opt.rawOptions))
+    console.log(rawOptions)
+
+    if (rawOptions === false) {
       let obj = {
         popup: opt.popup,
         version: opt.version,
@@ -99,7 +102,7 @@ class Options {
       };
       return obj;
     } else {
-      return this.toJSON(opt.rawOptions);
+      return rawOptions;
     }
   }
 
@@ -108,10 +111,19 @@ class Options {
    * @param {string} str - String in JS object format
    */
   static toJSON(str) {
-    let regex1 = /([a-zA-Z]+(?:\s?)):/g
-    let regex2 = /(?:\'\s?([a-zA-Z]+)\s?\')/g
+    str = (str === '' || str === false) ? 'null' : str
+    let regex1 = /([a-zA-Z]+(?:\s?)):/g // match object keys
+    let regex2 = /(?:\'\s?(.*?)\s?\')/g // match object values
     let result = str.replace(regex1, '"$1":').replace(regex2, '"$1"')
-    return JSON.parse(result)
+    
+    try {
+      let valid = JSON.parse(result)
+      if (valid && typeof valid === "object") {
+        return valid;
+      }
+    } catch (e) {}
+
+    return false;
   }
 
   static restore() {
