@@ -22,8 +22,9 @@ let toggleView = (view, isEditor=false) => {
     backBtn.hidden = (isEditor) ? false : true;
 }
 
-let showNotification = (value = true) => {
+let showNotification = (text, value = true) => {
     value = !value
+    notification.textContent = text
     notification.hidden = value
 
     if (value === false) {
@@ -63,7 +64,7 @@ saveBtn.onclick = () => {
     // Store the user's options
     chrome.storage.sync.set({bibleup: Options.getOptions()}, function() {
         chrome.storage.sync.set({bibleup_init: Options.initOptions()}, function() {
-            showNotification();
+            showNotification('Options saved successfully');
         });
     });
 }
@@ -76,6 +77,17 @@ activeBtn.onclick = () => {
             chrome.storage.sync.set({bibleup_activated: true}, showStatus.bind(this, true))
         }
     })
+}
+
+refreshBtn.onclick = () => {
+    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+        chrome.tabs.sendMessage(tabs[0].id, {action: "refresh"}, (res) => {
+            if (res.status == 'success') {
+                showNotification('Page is refreshed');
+            }
+        }); 
+         
+    });
 }
 
 let setActivateStatus = () => {

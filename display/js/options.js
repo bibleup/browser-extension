@@ -80,7 +80,7 @@ class Options {
   static initOptions() {
     let opt = this.getOptions();
     let rawOptions = (this.toJSON(opt.rawOptions))
-    console.log(rawOptions)
+    //console.log(rawOptions)
 
     if (rawOptions === false) {
       let obj = {
